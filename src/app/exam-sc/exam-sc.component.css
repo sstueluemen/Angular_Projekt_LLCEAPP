@@ -1,0 +1,24 @@
+.boldred {
+  font-weight: bold;
+  color: red
+}
+.boldgreen {
+  font-weight: bold;
+  color: green
+}
+.statistics {
+  color:rgb(27, 99, 194);
+
+}
+.boldorange {
+  font-weight: bold;
+  color: orange
+}
+.boldblue {
+  font-weight: bold;
+  color: lightskyblue
+}
+.dad {
+  color: red;
+  text-align: center;
+}

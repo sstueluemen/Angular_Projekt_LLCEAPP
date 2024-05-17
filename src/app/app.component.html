@@ -1,0 +1,147 @@
+<div>
+  <nav class="navbar">
+    <nav class="navbar fixed-top navbar-expand-sm bg-light; navcolor">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">LPIC-1</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Learn
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="learnMcList"
+                    >Learn all MC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="learnScList"
+                    >Learn all SC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="learnFiList"
+                    >Learn all FI </a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="learnMcOne"
+                    >Learn one MC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="learnScOne"
+                    >Learn one SC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="learnFiOne"
+                    >Learn one FI </a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Check
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="checkAll"
+                    >Check All Questions</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="checkMc"
+                    >Check MC Questions</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="checkSc"
+                    >Check SC Questions</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="checkFi"
+                    >Check FI Questions</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Exam
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="examMc"
+                    >Exam Mode MC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="examSc"
+                    >Exam Mode SC</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="examFi"
+                    >Exam Mode FI</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </nav>
+</div>
+
+<div class="main">
+
+  <span> ------ </span>
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <br>
+  Wie Sie lernen, werden Sie lieben!!!
+  <br> <br>
+</footer>

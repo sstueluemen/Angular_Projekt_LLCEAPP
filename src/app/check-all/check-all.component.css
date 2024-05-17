@@ -1,0 +1,24 @@
+.boldred {
+  font-weight: bold;
+  color: red;
+}
+.boldgreen {
+  font-weight: bold;
+  color: green;
+  background-color: wheat;
+}
+.statistics {
+  color: rgb(50, 99, 204);
+}
+.lives {
+  color: gray;
+}
+.gotolearnmode {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.dad {
+  color: red;
+  text-align: center;
+}
+

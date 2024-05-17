@@ -1,0 +1,75 @@
+<h5 style="text-align: center;">
+  Check Single Choise (SC) Questions <br>
+  <span class="lives">You have 3 Wrong Answers ==> {{learnwrong }} </span>
+</h5>
+<div *ngIf="!gotolearnmode">
+
+  <button type="button" class="btn btn-outline-dark" (click)="firstQuery()">first</button>
+
+<button type="button" class="btn btn-outline-secondary" style="margin-left: 80%
+;" (click)="lastQuery()">last</button>  
+
+<div class="statistics" style="text-align: center;" > 
+  Total: {{ statistic.qmaxnumber }} Questions <br> Answer: {{ statistic.qanswered }} =>
+  Noanswer: {{ statistic.qnotanswered }} => Wrong: {{ statistic.qwrong }} =>
+  Correct: {{ statistic.qcorrect }} 
+</div>
+
+<p>Question: {{ query.qid }} | Typ: {{ query.qtyp }} <br /></p>
+
+<div *ngFor="let qt of query.qtxt">
+  <span *ngIf="qt[0] === ' '"> _ {{ qt }} <br /> </span>
+  <span *ngIf="qt[0] != ' '"> {{ qt }} <br /> </span>
+</div>
+ <!-- Sc -->
+ <div *ngIf="query.qtyp === 'sc'">
+   <div *ngFor="let ans of query.qanswers; index as ansind">
+     <span *ngIf="showanswers">
+      <span *ngIf="ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+          <input type="radio" (click)="ans.givenans = !ans.givenans" checked disabled/>
+          {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+          {{ ans.givenans }}
+        </span>
+      </span>
+      <span *ngIf="!ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid">
+          <input type="radio" (click)="changeGivenAnswer(ansind)"  disabled/>
+          {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+          {{ ans.givenans }}
+        </span>
+      </span>
+      <span *ngIf="queryNrAnswersShow != query.qid">
+        <input type="radio" (click)="changeGivenAnswer(ansind)"  disabled/>
+        {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+        {{ ans.givenans }}
+      </span>
+    </span>
+    <span *ngIf="!showanswers">
+      <div *ngIf="ans.givenans">
+        <input type="radio" (click)="changeGivenAnswer(ansind)" checked/>
+        {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}: {{ ans.givenans }}
+      </div>
+      <div *ngIf="!ans.givenans">
+        <input type="radio" (click)="changeGivenAnswer(ansind)" />
+        {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}: {{ ans.givenans }}
+      </div>
+    </span>
+  </div>
+</div>
+
+</div>
+<div *ngIf="gotolearnmode">
+  <h2 class="dad">You had already 3 Wrong Answers</h2>
+  <h3>Please go to LEARN mode</h3>
+</div>
+<br>
+<button type="button" class="btn btn-outline-success" style="margin-left: 15%
+" (click)="prevQuery()">back</button>
+<button type="button" class="btn btn-outline-primary" style="margin-left: 13%
+" (click)="toggleAnswers(query.qid)">check</button>
+<button type="button" class="btn btn-outline-success" style="margin-left: 13%
+" (click)="nextQuery()">next</button>
+  <button type="button" class="btn btn-danger" style="margin-left: 15%;" (click)="resetAnswers()">
+    RESET
+  </button>

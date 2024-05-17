@@ -1,0 +1,18 @@
+.boldred {
+  font-weight: bold;
+  color: red
+}
+.boldgreen {
+  font-weight: bold;
+  color: green
+}
+.statistics {
+  color: rgb(50, 99, 204);
+}
+.lives {
+  color: gray;
+}
+.dad {
+  color: red;
+  text-align: center;
+}

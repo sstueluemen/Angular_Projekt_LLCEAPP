@@ -1,0 +1,129 @@
+<h5 style="text-align: center;">
+  Exam Fill In (FI) Questions <br>
+</h5>
+<div *ngIf="!examresult">
+  <div *ngIf="!gotolearnmode">
+
+    <button type="button" class="btn btn-outline-dark" (click)="firstQuery()">first</button>
+    <button type="button" class="btn btn-outline-secondary" style="margin-left: 80%
+;" (click)="lastQuery()">last</button>
+
+
+    <br><br>
+    <p>Question: {{ query.qid }} <br /></p>
+
+    <div *ngFor="let qt of query.qtxt">
+      <span *ngIf="qt[0] === ' '"> _ {{ qt }} <br /> </span>
+      <span *ngIf="qt[0] != ' '"> {{ qt }} <br /> </span>
+    </div>
+    <!-- FI -->
+    <div *ngIf="query.qtyp === 'fi'">
+      <div *ngFor="let ans of query.qanswers; index as ansind">
+        <span *ngIf="showanswers">
+          <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+            {{ ansind + 1 }}: {{ ans.txt }}
+          </span>
+          <span *ngIf="queryNrAnswersShow != query.qid">
+            {{ ansind + 1 }}:
+            <input type="text" value="{{ ans.txt }}" />
+          </span>
+        </span>
+        <div>
+          <span *ngIf="correctInput">
+            <span *ngIf="!showanswers">
+              {{ ansind + 1 }}:
+              <input type="text" #myinput (keyup)="keyinput(myinput.value)" value="{{ query.qgiventxt }}"
+                class="boldgreen" llceaeAutoFocusInput (keyup.enter)="nextQuery()" /></span>
+          </span>
+          <span *ngIf="!correctInput">
+            <span *ngIf="!showanswers">
+              {{ ansind + 1 }}:
+              <input type="text" #myinput (keyup)="keyinput(myinput.value)" value="{{ query.qgiventxt }}"
+                llceaeAutoFocusInput (keyup.enter)="nextQuery()" /></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline-success" style="margin-left: 30%
+" (click)="prevQuery()">back</button>
+    <button type="button" class="btn btn-outline-success" style="margin-left: 20%
+" (click)="nextQuery()">next</button>
+    <button type="button" class="btn btn-success" style="margin-left: 15%;" (click)="examEnd()">
+      End Exam
+    </button>
+    <hr />
+  </div>
+  <div *ngIf="gotolearnmode">
+    <h5 class="dad">You had already 7 Wrong Answers</h5>
+    <h5>Please go to LEARN mode</h5>
+    <br>
+    <button class="btn btn-primary" routerLink="/learnMcList">I go to Learn Mode!</button>
+  </div>
+</div>
+
+<div *ngIf="examresult">
+  <button class="btn btn-info" (click)="showResultQuestions = !showResultQuestions">Exam Questions
+  </button>
+  <button class="btn btn-primary" routerLink="/home" style="margin-left: 62%;">Home</button>
+  <div class="statistics">
+    <h2 style="text-align: center;">Your Result</h2>
+    Number of Questions: {{ statistic.qmaxnumber }} <br />
+    <ul>
+      <li>You answered: {{ statistic.qanswered }} <br /></li>
+      <ul>
+        <li>Correct answered: {{ statistic.qcorrect }} <br /></li>
+        <li>Wrong answered: {{ statistic.qwrong }} <br /></li>
+      </ul>
+      <li>Not answered: {{ statistic.qnotanswered }} <br /></li>
+    </ul>
+  </div>
+
+
+  <!-- show exam question results correct/wrong -->
+  <div *ngIf="showResultQuestions">
+    <h3>Answered questions with correct/wrong answers!</h3>
+    <div *ngFor="let query of ql101Fiall">
+      <p>Question: {{ query.qid }} | Typ: {{ query.qtyp }} <br /></p>
+
+      <div *ngFor="let qt of query.qtxt">
+        <span *ngIf="qt[0] === ' '"> _ {{ qt }} <br /> </span>
+        <span *ngIf="qt[0] != ' '"> {{ qt }} <br /> </span>
+      </div>
+      <!-- FI -->
+      <div *ngIf="query.qtyp === 'fi'">
+        <div *ngFor="let ans of query.qanswers; index as ansind">
+          <span *ngIf="showanswers">
+            <span *ngIf="ans.correct && ans.givenans">
+              <span class="boldgreen">
+                <input type="checkbox" checked disabled />
+                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+                {{ ans.givenans }}
+              </span>
+            </span>
+            <span *ngIf="ans.correct && !ans.givenans">
+              <span class="boldblue">
+                <input type="checkbox" disabled checked />
+                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+                {{ ans.givenans }}
+              </span>
+            </span>
+
+            <span *ngIf="!ans.correct && ans.givenans">
+              <span class="boldred">
+                <input type="checkbox" disabled />
+                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+                {{ ans.givenans }}
+              </span>
+            </span>
+
+            <span *ngIf="!ans.correct && !ans.givenans">
+              <input type="checkbox" disabled />
+              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
+              {{ ans.givenans }}
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
